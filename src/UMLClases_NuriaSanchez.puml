@@ -28,18 +28,18 @@ max_attendees : Integer
 Event <|-- Conference
 Event <|-- BoardMeeting
 
-Event -- Location : isLocatedIn
-Event -- Member : attendsTo
+Event"0..*"  -- "0..*" Location : isLocatedIn
+Event"0..*"  -- "0..*" Member : attendsTo
 
 Person <|-- Member
 Member <|-- BoardMember
 
-AAUOC o-- Event
-AAUOC o-- Person
-AAUOC o-- Location
+AAUOC o-- "0..*" Event
+AAUOC o-- "0..*" Person
+AAUOC o-- "0..*" Location
 
-Conference --- Person : attendsTo
+Conference"0..*"  --- "0..*" Person : attendsTo
 
-BoardMeeting --- BoardMember : attendsTo
+BoardMeeting"0..*"  --- "0..*" BoardMember : attendsTo
 
 @enduml
