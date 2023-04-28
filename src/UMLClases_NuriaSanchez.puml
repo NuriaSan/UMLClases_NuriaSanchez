@@ -1,9 +1,35 @@
 @startuml
+Class AAUOC{
+newLocation(I:Location) : void
+newEvent(e:Event) : void
+newPerson(p:Person) : void
+informEvent(e:Event) : void
+register(m:Member, e:Event) : void
+}
+Class Person{
+name : String
+}
+Class Location{
+description : String
+address : String
+}
+Class Event{
+date: Date
+description : String
+assign(l : Location) : void
+}
+Class Member{
+e-mail : String
+}
+Class Conference{
+max_attendees : Integer
+}
+
 Event <|-- Conference
 Event <|-- BoardMeeting
 
-Event -- Location
-Event -- Member
+Event -- Location : isLocatedIn
+Event -- Member : attendsTo
 
 Person <|-- Member
 Member <|-- BoardMember
@@ -12,8 +38,8 @@ AAUOC o-- Event
 AAUOC o-- Person
 AAUOC o-- Location
 
-Conference --- Person
+Conference --- Person : attendsTo
 
-BoardMeeting --- BoardMember
+BoardMeeting --- BoardMember : attendsTo
 
 @enduml
