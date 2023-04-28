@@ -1,4 +1,19 @@
 @startuml
+Event <|-- Conference
+Event <|-- BoardMeeting
 
+Event -- Location
+Event -- Member
+
+Person <|-- Member
+Member <|-- BoardMember
+
+AAUOC o-- Event
+AAUOC o-- Person
+AAUOC o-- Location
+
+Conference --- Person
+
+BoardMeeting --- BoardMember
 
 @enduml
